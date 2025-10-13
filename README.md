@@ -1,16 +1,67 @@
-# React + Vite
+# React Todo App 🗒️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+UdemyのReact基礎講座で作成したTodoアプリをベースに、独自の機能やデザインを加えてブラッシュアップしたアプリです(製作中)。
+Reactの基礎的な概念（useState / props / コンポーネント分割 / イベント処理）を実践的に学ぶために制作しました。
 
-Currently, two official plugins are available:
+※こちらの講座を参考にさせていただきました：
+【React18対応】モダンJavaScriptの基礎から始める 挫折しないためのReact入門
+学習内容をベースに、UIデザインや機能を一部カスタマイズして制作しています。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## アプリ概要
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+シンプルなTodoリストアプリです。  
+タスクの追加・完了・削除を行うことができ、完了したタスクは別のリストに移動します。  
+（※将来的にはローカルストレージ保存や優先度設定機能を追加予定）
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 主な機能
+
+- 新しいタスクの追加
+- タスクの完了／未完了の切り替え
+- タスクの削除
+- 登録上限に達したときのアラート表示
+
+---
+
+## 使用技術
+
+- React
+- JavaScript
+- CSS
+- Vite（開発環境）
+- StackBlitz（初期構築）
+
+---
+
+## スクリーンショット
+
+現在製作中です。
+
+---
+
+## 学んだこと・工夫したポイント
+
+- Reactの`useState`を使った状態管理
+- `props`を使ったコンポーネント間のデータ受け渡し
+- コンポーネント設計の分割（InputArea / IncompleteTodos / CompleteTodos）
+- スプレッド構文`...`や`map`の活用で効率的にリストを描画
+- UIの改善（色・影・余白などを工夫）
+
+---
+
+## デモURL
+
+現在デプロイ製作中です。
+
+---
+
+## 今後のアップデート予定
+
+- タスクの編集機能
+- ローカルストレージ保存
+- タスクの並び替え
+- レスポンシブデザイン対応
+
