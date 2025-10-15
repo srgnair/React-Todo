@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { InputTodo } from './components/InputTodo';
 import { IncompleteTodos } from './components/IncompleteTodos';
@@ -6,8 +6,15 @@ import { CompleteTodos } from './components/CompleteTodos';
 
 export const Todo = () => {
   const [todoText, setTodoText] = useState('');
-  const [incompleteTodos, setIncompleteTodos] = useState([]);
-  const [completeTodos, setCompleteTodos] = useState([]);
+  const [incompleteTodos, setIncompleteTodos] = useState(() =>
+  JSON.parse(localStorage.getItem("incompleteTodos") || []));
+  const [completeTodos, setCompleteTodos] = useState(() =>
+  JSON.parse(localStorage.getItem("completeTodos") || []));
+
+  useEffect(() => {
+    localStorage.setItem("incompleteTodos", JSON.stringify(incompleteTodos));
+    localStorage.setItem("completeTodos", JSON.stringify(completeTodos));
+  }, [incompleteTodos, completeTodos]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
