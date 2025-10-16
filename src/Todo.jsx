@@ -10,6 +10,8 @@ export const Todo = () => {
   JSON.parse(localStorage.getItem("incompleteTodos") || []));
   const [completeTodos, setCompleteTodos] = useState(() =>
   JSON.parse(localStorage.getItem("completeTodos") || []));
+  const [editing, setEditing] = useState(null); 
+  const [editingText, setEditingText] = useState("");
 
   useEffect(() => {
     localStorage.setItem("incompleteTodos", JSON.stringify(incompleteTodos));
@@ -53,6 +55,40 @@ export const Todo = () => {
 
   const isMaxLimitIncompleteTodos = incompleteTodos.length >= 5;
 
+  const onStartEdit = (list, index) => {
+    setEditing({ list, index });
+    const current =
+      list === "incomplete" ? incompleteTodos[index] : completeTodos[index];
+    setEditingText(current);
+  };
+
+  const onChangeEditingText = (e) => setEditingText(e.target.value);
+
+  const onSaveEdit = () => {
+    if (!editing) return;
+    const { list, index } = editing;
+    const text = editingText.trim();
+    if (text === "") return;
+
+    if (list === "incomplete") {
+      const next = [...incompleteTodos];
+      next[index] = text;
+      setIncompleteTodos(next);
+    } else {
+      const next = [...completeTodos];
+      next[index] = text;
+      setCompleteTodos(next);
+    }
+
+    setEditing(null);
+    setEditingText("");
+  };
+
+  const onCancelEdit = () => {
+    setEditing(null);
+    setEditingText("");
+  };
+
   return (
     <>
       <InputTodo
@@ -71,8 +107,23 @@ export const Todo = () => {
         todos={incompleteTodos}
         onClickDelete={onClickDelete}
         onClickComplete={onClickComplete}
+        editing={editing}
+        editingText={editingText}
+        onStartEdit={onStartEdit}
+        onChangeEditingText={onChangeEditingText}
+        onSaveEdit={onSaveEdit}
+        onCancelEdit={onCancelEdit}
       />
-      <CompleteTodos todos={completeTodos} onClickBack={onClickBack} />
+      <CompleteTodos
+        todos={completeTodos}
+        onClickBack={onClickBack}
+        editing={editing}
+        editingText={editingText}
+        onStartEdit={onStartEdit}
+        onChangeEditingText={onChangeEditingText}
+        onSaveEdit={onSaveEdit}
+        onCancelEdit={onCancelEdit} 
+      />
     </>
   );
 };
