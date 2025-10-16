@@ -24,6 +24,7 @@ Reactの基礎的な概念（useState / props / コンポーネント分割 / �
 - タスクの削除
 - 登録上限に達したときのアラート表示
 - ローカルストレージ保存機能（再読み込みしてもデータが保持される）
+- タスクの編集機能
 
 ---
 
@@ -39,7 +40,7 @@ Reactの基礎的な概念（useState / props / コンポーネント分割 / �
 
 ## スクリーンショット
 
-現在製作中です。
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/e726618c-df08-4d93-85ae-8f484c51f2c8" />
 
 ---
 
